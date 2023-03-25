@@ -1,3 +1,6 @@
+import {useEffect, useState} from "react";
+import UserComponent from "./components/UserComponent";
+import {getUsers} from "./services/userService";
 
 function App() {
     // let users = [
@@ -24,21 +27,40 @@ function App() {
     //     </div>
     // )
 
-    const click2 = () => {
-        console.log('click2 test');
-    }
 
-return (
-    <div>
-        <button onClick={()=> console.log('click')}>click me</button>
+    // let [counter, setcounter] = useState(0);
+    // const increment = () => {
+    //     setcounter(++counter);
+    // }
+    //
+    // return (
+    //     <div>
+    //         <h1>{counter}</h1>
+    //         <button onClick={increment}>increment me</button>
+    //     </div>
+    // );
+    //
 
-        <button onClick={click2}>click me2</button>
-
-    </div>
 
 
+        let [users, setUsers] = useState ([]);
+        useEffect(() =>  {
+            getUsers().then(value => setUsers([...value]));
+
+        }, [])
+
+
+    return (
+        <div>
+            {
+                users.map(value => <UserComponent
+                    key ={value.id}
+                    item = {value}  />)
+            }
+
+
+        </div>
     );
-
 
 }
 
