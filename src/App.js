@@ -6,16 +6,23 @@ import UserComponent from "./components/UserComponent";
 
 function App() {
 let [users, setUsers] = useState([])
+    let [chosenUser, setChosenUser] = useState (null);
+
     useEffect(() => {
         getUsers().then(value => setUsers(value.data));
     }, [])
 
     const chooseUser = (id) => {
-        getUser(id).then(value => console.log(value.data))
+        getUser(id).then(value => setChosenUser(value.data))
     }
 
     return (
         <div>
+
+            {/*<div>{chosenUser?.name}</div>*/}
+            {chosenUser && (<div>{chooseUser.name}</div>)}
+            <hr/>
+
             {users.map(value => <
                 UserComponent
                 key={value.id}
