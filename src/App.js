@@ -20,7 +20,7 @@ let [users, setUsers] = useState([])
         <div>
 
             {/*<div>{chosenUser?.name}</div>*/}
-            {chosenUser && (<div>{chooseUser.name}</div>)}
+            {chosenUser && (<div>{chosenUser.name}</div>)}
             <hr/>
 
             {users.map(value => <
@@ -38,4 +38,4 @@ let [users, setUsers] = useState([])
 
 export default App;
 
-// 17.29
+
